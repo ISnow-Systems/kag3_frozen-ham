@@ -6,10 +6,11 @@
 *******************************************************************************/
 
 var MBVersion = "1.0b";
+var FHAMVersion = "1u1";
 var MBBasePath = "system/Ham/";
 
 dm("");
-dm("HamExtention for KAG3 version " + MBVersion);
+dm("FrozenHamExtention for KAG3 version Fr:" + FHAMVersion + " ,Ham:" + MBVersion);
 
 // 設定用の辞書を用意する
 var MBSystemPref = %[];
