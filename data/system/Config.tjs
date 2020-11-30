@@ -14,7 +14,7 @@
 // ◆ タイトル
 // ウィンドウのキャプション(タイトル)および
 // タスクバーに表示されるものです。
-;System.title = "吉里吉里";
+;System.title = "吉里吉里Z";
 
 
 // ◆ シナリオ解析モード
@@ -58,8 +58,8 @@ function KAGWindow_config()
 // scWidth に画面の幅、scHeight に画面の高さをピクセル単位で指定します。
 // 標準的に使われている 640x480 や 800x600 のような画面サイズではないサイズ
 // に設定すると、フルスクリーンにできない場合があります。
-;scWidth = 800;
-;scHeight = 600;
+;scWidth = 1280;
+;scHeight = 720;
 
 
 // ◆ 読みとり専用モード
@@ -123,6 +123,8 @@ function KAGWindow_config()
 // それほど重要ではないです。
 // 他と重ならない一意なIDは↓で取得することもできます。
 // http://kikyou.info/uuidgen/uuidgen.php (出てきたIDをコピー&ペースト)
+// 上記サイトにアクセスできない場合↓を利用することもできます。
+// https://www.uuidgenerator.net/version4 (Your Version 4 UUID の Copy をクリック)
 // または 吉里吉里を起動して 「選択しない」ボタンを押し、Shift + F4 を押して
 // コンソールを表示させ、その下側の入力欄に
 //       System.createUUID()
@@ -290,7 +292,7 @@ function KAGWindow_config()
 // ◆ 初期状態のメッセージレイヤの数
 // 前景レイヤと違って、0 を指定することはできません。これも必要な数だけ確保
 // するようにすべきです。laycount タグでシナリオ内でも変更できます。
-;numMessageLayers = 2;
+;numMessageLayers = 3;
 
 
 // ◆ 初期状態でメッセージレイヤを表示するかどうか
@@ -509,8 +511,8 @@ function MessageLayer_config()
 // す。
 ;ml = 16;  // 左端位置
 ;mt = 16;  // 上端位置
-;mw = 640-32;   // 幅
-;mh = 480-32;   // 高さ
+;mw = 1280-16;   // 幅
+;mh = 480-16;   // 高さ
 
 
 // ◆ 自動改行/改ページ

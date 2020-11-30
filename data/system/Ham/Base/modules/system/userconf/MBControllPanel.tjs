@@ -15,7 +15,8 @@ class MBControllPanel extends MBComponentLayer
 	
 	var consoleImage = "userconf/console";	// 操作盤基本画像
 	var consoleImageNoQs = "userconf/console_noqs";	// クイックセーブ無効版画像
-	var regularConsolePosition = %[x : 56, y : 99];	// 操作盤の標準位置
+	var regularConsoleOffset = 51; // 操作盤の Y 軸補正
+	var regularConsolePosition = %[x : 56, y : 99 + regularConsoleOffset];	// 操作盤の標準位置
 	var regularConsoleSize = %[width : 0, height : 0];
 	var consolePosition = %[x : 0, y : 0];
 	var consoleSize = %[width : 0, height : 0];
@@ -356,18 +357,18 @@ class MBControllPanel extends MBComponentLayer
 		
 		// BGM調整
 		objSectionSelectorArray[0] = new MBControllPanelSectionButton(window, this);
-		var pos = getControllPanelPosition(56, 99);
+		var pos = getControllPanelPosition(56, 99 + regularConsoleOffset);
 		objSectionSelectorArray[0].setPos(pos.x, pos.y);
 		
 		objBGMVolumePanel = new MBControllPanelAudioPane(window, this);
 		objBGMVolumePanel.makeBGMFader();
-		pos = getControllPanelPosition(230, 93);
+		pos = getControllPanelPosition(230, 93 + regularConsoleOffset);
 		objBGMVolumePanel.setPos(pos.x, pos.y);
 		objBGMVolumePanel.visible = true;
 		
 		objBGMVolumeIcon = new MBControllPanelAudioIcons(window, this, objBGMVolumePanel);
 		
-		pos = getControllPanelPosition(213, 100);
+		pos = getControllPanelPosition(213, 100 + regularConsoleOffset);
 		objBGMVolumeIcon.setPos(pos.x, pos.y);
 		objBGMVolumeIcon.visible = true;
 		
@@ -375,7 +376,7 @@ class MBControllPanel extends MBComponentLayer
 		objBGMMuteButton = new MBControllPanelAudioMuteButton(window, this);
 		objBGMMuteButton.strBasicImageName    = sysfunc.getPathImage("userconf/audio_mute");
 		objBGMMuteButton.strSelectedImageName = sysfunc.getPathImage("userconf/audio_mute_checked");
-		pos = getControllPanelPosition(617, 97);
+		pos = getControllPanelPosition(617, 97 + regularConsoleOffset);
 		objBGMMuteButton.setPos(pos.x, pos.y);
 		objBGMMuteButton.initState();
 		if (intBGMMutedVolume !== void) {
@@ -393,17 +394,17 @@ class MBControllPanel extends MBComponentLayer
 		
 		// SE調整
 		objSectionSelectorArray[1] = new MBControllPanelSectionButton(window, this);
-		pos = getControllPanelPosition(56, 161);
+		pos = getControllPanelPosition(56, 161 + regularConsoleOffset);
 		objSectionSelectorArray[1].setPos(pos.x, pos.y);
 		
 		objSEVolumePanel = new MBControllPanelAudioPane(window, this);
 		objSEVolumePanel.makeSEFader();
-		pos = getControllPanelPosition(230, 154);
+		pos = getControllPanelPosition(230, 154 + regularConsoleOffset);
 		objSEVolumePanel.setPos(pos.x, pos.y);
 		objSEVolumePanel.visible = true;
 		
 		objSEVolumeIcon = new MBControllPanelAudioIcons(window, this, objSEVolumePanel);
-		pos = getControllPanelPosition(213, 161);
+		pos = getControllPanelPosition(213, 161 + regularConsoleOffset);
 		objSEVolumeIcon.setPos(pos.x, pos.y);
 		objSEVolumeIcon.visible = true;
 		
@@ -412,7 +413,7 @@ class MBControllPanel extends MBComponentLayer
 		objSEMuteButton.setSizeToImageSize();
 		objSEMuteButton.strBasicImageName    = sysfunc.getPathImage('userconf/audio_mute');
 		objSEMuteButton.strSelectedImageName = sysfunc.getPathImage('userconf/audio_mute_checked');
-		pos = getControllPanelPosition(617, 158);
+		pos = getControllPanelPosition(617, 158 + regularConsoleOffset);
 		objSEMuteButton.setPos(pos.x, pos.y);
 		objSEMuteButton.initState();
 		if (intSEMutedVolume !== void) {
@@ -430,7 +431,7 @@ class MBControllPanel extends MBComponentLayer
 		
 		// 「文字速度」セクション
 		objSectionSelectorArray[2] = new MBControllPanelSectionButton(window, this);
-		pos = getControllPanelPosition(56, 220);
+		pos = getControllPanelPosition(56, 220 + regularConsoleOffset);
 		objSectionSelectorArray[2].setPos(pos.x, pos.y);
 		
 		var i;
@@ -445,7 +446,7 @@ class MBControllPanel extends MBComponentLayer
 			objCharSpeed2Buttons[i].setSizeToImageSize();
 			objCharSpeed2Buttons[i].strBasicImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
 			objCharSpeed2Buttons[i].strSelectedImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
-			pos = getControllPanelPosition(590 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 217);
+			pos = getControllPanelPosition(590 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 217 + regularConsoleOffset);
 			objCharSpeed2Buttons[i].setPos(pos.x, pos.y);
 			if (i > 1) {
 				objCharSpeed2Buttons[i].intOptionValue = window.chSpeeds.fast * 1.5 * i;
@@ -474,7 +475,7 @@ class MBControllPanel extends MBComponentLayer
 			objCharSpeedButtons[i].setSizeToImageSize();
 			objCharSpeedButtons[i].strBasicImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
 			objCharSpeedButtons[i].strSelectedImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
-			pos = getControllPanelPosition(590 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 245);
+			pos = getControllPanelPosition(590 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 245 + regularConsoleOffset);
 			objCharSpeedButtons[i].setPos(pos.x, pos.y);
 			if (i > 1) {
 				objCharSpeedButtons[i].intOptionValue = window.chSpeeds.fast * 1.5 * i;
@@ -503,7 +504,7 @@ class MBControllPanel extends MBComponentLayer
 			objAMCharSpeedButtons[i].setSizeToImageSize();
 			objAMCharSpeedButtons[i].strBasicImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
 			objAMCharSpeedButtons[i].strSelectedImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
-			pos = getControllPanelPosition(605 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 291);
+			pos = getControllPanelPosition(605 - 40 * i + (25 - intCHSButtonWidth[i]) * 0.5, 291 + regularConsoleOffset);
 			objAMCharSpeedButtons[i].setPos(pos.x, pos.y);
 			if (i > 1) {
 				objAMCharSpeedButtons[i].intOptionValue = window.chSpeeds.fast * 1.5 * i;
@@ -532,7 +533,7 @@ class MBControllPanel extends MBComponentLayer
 			objAMLineWaitButtons[i].setSizeToImageSize();
 			objAMLineWaitButtons[i].strBasicImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
 			objAMLineWaitButtons[i].strSelectedImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
-			pos = getControllPanelPosition(383 - 35 * i + (25 - intCHSButtonWidth[i]) * 0.5, 345);
+			pos = getControllPanelPosition(383 - 35 * i + (25 - intCHSButtonWidth[i]) * 0.5, 345 + regularConsoleOffset);
 			objAMLineWaitButtons[i].setPos(pos.x, pos.y);
 			objAMLineWaitButtons[i].intOptionValue = 60 + 120 * i;
 			objAMLineWaitButtons[i].initState();
@@ -556,7 +557,7 @@ class MBControllPanel extends MBComponentLayer
 			objAMPageWaitButtons[i].setSizeToImageSize();
 			objAMPageWaitButtons[i].strBasicImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
 			objAMPageWaitButtons[i].strSelectedImageName = sysfunc.getPathImage("userconf/%d".sprintf(i + 1));
-			pos = getControllPanelPosition(680 - 35 * i + (25 - intCHSButtonWidth[i]) * 0.5, 345);
+			pos = getControllPanelPosition(680 - 35 * i + (25 - intCHSButtonWidth[i]) * 0.5, 345 + regularConsoleOffset);
 			objAMPageWaitButtons[i].setPos(pos.x, pos.y);
 			objAMPageWaitButtons[i].intOptionValue = 500 + 500 * i;
 			objAMPageWaitButtons[i].initState();
@@ -572,7 +573,7 @@ class MBControllPanel extends MBComponentLayer
 		
 		// 文字表示テストレイヤー
 		objCharSpeedTestLayer = new MBContextMenuCharSpeedTestLayer(window, this);
-		pos = getControllPanelPosition(160, 384);
+		pos = getControllPanelPosition(160, 384 + regularConsoleOffset);
 		objCharSpeedTestLayer.setPos(pos.x, pos.y);
 		objCharSpeedTestLayer.visible = true;
 		objCharSpeedTestLayer.setSpeedTester(0);
@@ -589,7 +590,7 @@ class MBControllPanel extends MBComponentLayer
 			objQsWithDialogButton.setSizeToImageSize();
 			objQsWithDialogButton.strBasicImageName    = sysfunc.getPathImage('userconf/qs_withdialog');
 			objQsWithDialogButton.strSelectedImageName = sysfunc.getPathImage('userconf/qs_withdialog_checked');
-			pos = getControllPanelPosition(240, 450);
+			pos = getControllPanelPosition(240, 450 + regularConsoleOffset);
 			objQsWithDialogButton.setPos(pos.x, pos.y);
 			objQsWithDialogButton.intOptionValue = false;
 			objQsWithDialogButton.initState();
@@ -605,7 +606,7 @@ class MBControllPanel extends MBComponentLayer
 			objQsWithoutDialogButton.setSizeToImageSize();
 			objQsWithoutDialogButton.strBasicImageName    = sysfunc.getPathImage('userconf/qs_withoutdialog');
 			objQsWithoutDialogButton.strSelectedImageName = sysfunc.getPathImage('userconf/qs_withoutdialog_checked');
-			pos = getControllPanelPosition(450, 450);
+			pos = getControllPanelPosition(450, 450 + regularConsoleOffset);
 			objQsWithoutDialogButton.setPos(pos.x, pos.y);
 			objQsWithoutDialogButton.intOptionValue = false;
 			objQsWithoutDialogButton.initState();
