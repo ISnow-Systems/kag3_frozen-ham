@@ -65,7 +65,7 @@ MBSystemPref.cmenuButtonEnabled = true;
 // ltMargin: 左上に以下同文
 // rtMargin: 右上に以下同文
 // absolute: 表示座標を直接指定
-MBGraphicPref.cmenuButtonPositionType = "rtMargin";
+MBGraphicPref.cmenuButtonPositionType = "rbMargin";
 
 // ◆ 表示位置
 MBGraphicPref.cmenuButtonPositionValue = %[x : 10, y : 10];
