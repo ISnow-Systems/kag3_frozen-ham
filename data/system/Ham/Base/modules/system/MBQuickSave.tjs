@@ -62,7 +62,7 @@ class MBQuickSave extends MBComponentLayer
 		objLoadButton.loadImages(sysfunc.getPathImage('bookmark/bt_quickload'));
 		objLoadButton.setPos(
 			objSaveButton.left + objSaveButton.width + MBGraphicPref.quicksaveButtonMargin.x,
-			objSaveButton.top + objSaveButton.height + MBGraphicPref.quicksaveButtonMargin.y
+			0
 		);
 		objLoadButton.visible = true;
 		
