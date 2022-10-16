@@ -1946,7 +1946,7 @@ class __internal_KAGParser
 							{
 								var name = value.substring(0, pipe_char_index);
 								valueVariant = args[name];
-								if (valueVariant !== void)
+								if (valueVariant === void)
 								{
 									valueVariant = value.substring(pipe_char_index + 1);
 								}
