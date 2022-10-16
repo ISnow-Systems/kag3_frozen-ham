@@ -1083,7 +1083,7 @@ class __internal_KAGParser
 			if (data.lineBufferUsing)
 			{
 				this.lineBuffer = data.lineBuffer;
-				this.curLineStr = data.curLineStr;
+				this.curLineStr = data.lineBuffer;
 				this.lineBufferUsing = true;
 			}
 			else
